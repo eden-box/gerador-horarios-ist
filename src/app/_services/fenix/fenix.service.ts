@@ -10,6 +10,7 @@ import {Lesson} from '../../_domain/Lesson/Lesson';
 import {Shift} from '../../_domain/Shift/Shift';
 import {ClassType, getClassTypeOrder} from '../../_domain/ClassType/ClassType';
 import {isSameWeek} from '../../_util/Time';
+import { environment } from 'src/environments/environment';
 
 const NO_ROOM_FOUND = 'NO ROOM FOUND';
 
@@ -108,7 +109,11 @@ export class FenixService {
 
   public httpGet(path: string): Promise<Response> {
     return fetch(this.url + path, {
-      method: 'GET'
+      method: 'GET',
+      headers:  {
+        'Access-Control-Allow-Origin': environment.url
+      },
+      mode: 'no-cors'
     });
   }
 

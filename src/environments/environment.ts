@@ -1,3 +1,4 @@
 export const environment = {
-  production: false
+  production: true,
+  url: 'https://horarios.edenbox.org'
 };
