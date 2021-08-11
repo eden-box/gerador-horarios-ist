@@ -18,7 +18,7 @@ const NO_ROOM_FOUND = 'NO ROOM FOUND';
 })
 export class FenixService {
 
-  url = 'https://ist-corsaway.herokuapp.com/https://fenix.tecnico.ulisboa.pt/api/fenix/v1/';
+  url = 'https://fenix.tecnico.ulisboa.pt/api/fenix/v1/';
   currentAcademicTerm: string;
 
   constructor(public translateService: TranslateService, public errorService: ErrorService) { }
