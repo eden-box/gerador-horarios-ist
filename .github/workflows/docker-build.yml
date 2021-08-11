@@ -1,10 +1,12 @@
 name: Docker Image CI
 
 on:
-  push:
-    tags:
-    - 'v*.*.*'
-
+#  push:
+#    tags:
+#    - 'v*.*.*'
+   push:
+     branches:
+     - master
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -25,7 +27,7 @@ jobs:
       id: docker_build
       with:
         push: true
-        tags: edenbox/schedules:${{ steps.vars.outputs.tag }}
+        tags: edenbox/schedules:latest
     
     - name: Docker Image Digest
       run: echo ${{ steps.docker_build.outputs.digest }}
