@@ -19,7 +19,7 @@ const NO_ROOM_FOUND = 'NO ROOM FOUND';
 })
 export class FenixService {
 
-  url = 'https://fenix.tecnico.ulisboa.pt/api/fenix/v1/';
+  url = environment.corsUrl + '/https://fenix.tecnico.ulisboa.pt/api/fenix/v1/';
   currentAcademicTerm: string;
 
   constructor(public translateService: TranslateService, public errorService: ErrorService) { }
@@ -109,11 +109,7 @@ export class FenixService {
 
   public httpGet(path: string): Promise<Response> {
     return fetch(this.url + path, {
-      method: 'GET',
-      headers:  {
-        'Access-Control-Allow-Origin': environment.url
-      },
-      mode: 'no-cors'
+      method: 'GET'
     });
   }
 
