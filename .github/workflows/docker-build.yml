@@ -42,17 +42,14 @@ jobs:
       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
     - name: Deploy the app to the cluster
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      uses: nickgronow/kubectl@master
       with:
+        config_data: ${{ secrets.KUBE_CONFIG_DATA }}
         args: set image deployment/schedule-app-deploy schedule-app=edenbox/schedules:${{ steps.vars.outputs.tag }} --namespace=schedule-app
         
     - name: Verify deployment
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        KUBECTL_VERSION: "1.19"
+      uses: nickgronow/kubectl@master
       with:
+        config_data: ${{ secrets.KUBE_CONFIG_DATA }}
         args: '"rollout status deployment/schedule-app-deploy --namespace=schedule-app"'
     
