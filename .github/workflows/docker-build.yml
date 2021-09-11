@@ -45,7 +45,7 @@ jobs:
       uses: nickgronow/kubectl@master
       with:
         config_data: ${{ secrets.KUBE_CONFIG_DATA }}
-        args: set image deployment/schedule-app-deploy schedule-app=edenbox/schedules:${{ steps.vars.outputs.tag }} --namespace=schedule-app
+        args: set image deployment/schedule-app-deploy schedule-app=edenbox/schedules:latest --namespace=schedule-app
         
     - name: Verify deployment
       uses: nickgronow/kubectl@master
